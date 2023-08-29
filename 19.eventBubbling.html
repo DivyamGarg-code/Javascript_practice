@@ -1,0 +1,100 @@
+<!-- EVENT BUBBLING/EVENT PROPAGATION -->
+<!-- EVENT CAPTURING -->
+<!-- EVENT DELEGATION -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubbling | Capturing | delegation</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    main{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+    }
+    .box{
+        min-height: 100px;
+        min-width: 100px;
+        padding: 5rem;
+        color: white;
+        font-weight: bold;
+        font-size: 2rem;
+        cursor: pointer;
+    }
+    .grandparent{
+        background-color: rgba(0, 179, 255, 0.625);
+        color: black;
+    }
+    .parent{
+        background-color: rgba(0, 72, 255, 0.74);
+    }
+    .child{
+        background-color: rgba(0, 0, 255, 0.527);
+    }
+</style>
+<body>
+    <main>
+        <div class="grandparent box">
+            Grandparent
+            <div class="parent box">
+                Parent
+                <div class="child box">Child</div>
+            </div>
+        </div>
+    </main>
+    <script>
+        const grandparent=document.querySelector(".grandparent");
+        const parent=document.querySelector(".parent");
+        const child=document.querySelector(".child");
+        // Capture events  
+        // Event Capturing | Events are captured from higher level to the lower level 
+        // -----------------------------------------------
+        // child.addEventListener("click",()=>{
+        //     console.log("Capture !!!! child");
+        // },true)
+        // parent.addEventListener("click",()=>{
+        //     console.log("Capture !!!! parent");
+        // },true)
+        // grandparent.addEventListener("click",()=>{
+        //     console.log("Capture !!!! grandparent");
+        // },true)
+        // document.body.addEventListener("click",()=>{
+        //     console.log("Capture !!!! body");
+        // },true)
+        // -----------------------------------------------
+
+        // not capture
+        // Event Bubbling | lower to higher level
+        // When you click on the child along with the event attached to that particular element rest of the event listners of its parents will also be triggered going from lower to higher level and this is known as event bubbling
+        // ---------------------------------------------------
+        // child.addEventListener("click",()=>{
+        //     console.log("You clicked on child");
+        // })
+        // parent.addEventListener("click",()=>{
+        //     console.log("You clicked on parent");
+        // })
+        // grandparent.addEventListener("click",()=>{
+        //     console.log("You clicked on grandparent");
+        // })
+        // document.body.addEventListener("click",()=>{
+        //     console.log("you clicked on body");
+        // })
+        // ------------------------------------------------------------------
+
+        // Event Delegation 
+        // remove all the event listners and add the event listner to the grandparent only you will observe this event listner will work if you click on its child due to the event bubbling
+        // the event listner will be attached to its children also automatically this is the event delegation
+        grandparent.addEventListener("click",(e)=>{
+            console.log(e.target.textContent);
+        })
+    </script>    
+</body>
+</html>

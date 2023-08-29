@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .todo_main_container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .todo_btn {
+            padding: 8px;
+            background-color: rgba(128, 128, 128, 0.878);
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .todo_list {
+            max-width: 500px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .todo_list input[type="text"] {
+            /* height: 60px; */
+            /* max-width: 400px; */
+            width: 100%;
+            padding: 10px;
+        }
+
+        .todo_list_main_container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .todo_item {
+            height: 60px;
+            width: 100%;
+            background-color: black;
+            color: white;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 20px;
+            padding: 10px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="todo_main_container">
+        <form class="todo_list">
+            <input type="text" name="todo_search_bar" placeholder="Add Todo">
+            <input type="submit" value="Add Todo" class="todo_btn">
+        </form>
+        <div class="todo_list_main_container">
+            <div class="todo_item">
+                <span>Todo Item 1</span>
+                <div class="todo_btn done">Done</div>
+                <div class="todo_btn remove">Remove</div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $(".todo_list").submit(function (e) {
+                e.preventDefault();
+                const newTodoText = $("input[type='text']", this).val();
+                const newTodoItem = `
+                <div class="todo_item">
+                    <span>${newTodoText}</span>
+                    <div class="todo_btn done">Done</div>
+                    <div class="todo_btn remove">Remove</div>
+                </div>`;
+
+                $(".todo_list_main_container").append(newTodoItem);
+                $("input[type='text']", this).val("");
+            });
+           
+        $(".todo_list_main_container").on("click", function (e) {
+            const clickedElement = $(e.target); 
+            const todoItem = clickedElement.closest(".todo_item");
+
+            if (clickedElement.hasClass("remove")) {
+                todoItem.remove();
+            } else if (clickedElement.hasClass("done")) {
+                todoItem.find("span").css("text-decoration", "line-through");
+            }
+        });
+        });
+    </script>
+</body>
+
+</html>

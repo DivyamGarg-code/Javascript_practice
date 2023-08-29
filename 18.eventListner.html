@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .main_container{
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        .btn_box{
+            width: fit-content;
+            height: fit-content;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .box1{
+            color: rgb(255, 255, 255);
+            background-color: rgba(0, 0, 0, 0.623);
+            font-size: 20px;
+        }
+        .box2{
+            background-color: rgba(128, 128, 128, 0.351);
+            color: black;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main_container">
+        <div class="box1 btn_box">Current Color : <span class="current-color">rgb(255,255,255)</span></div>
+        <div class="box2 btn_box">Change Background Color</div>
+    </div>
+    <!-- <button class="btn" id="btn1">Click 1</button>
+    <button class="btn" id="btn2">Click 2</button>
+    <button class="btn" id="btn3">Click 3</button> -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <!-- <script src="17.promises.js"></script> -->
+    <script>
+        function randomColorGenerator(){
+            const red=Math.floor(Math.random()*256);
+            const green=Math.floor(Math.random()*256);
+            const blue=Math.floor(Math.random()*256);
+            const randomColor=`rgb(${red},${green},${blue})`;
+            return randomColor;
+        }
+        const body=document.body;
+        const mainButton=document.querySelector(".box2");
+        const current_color=document.querySelector(".current-color");
+        mainButton.addEventListener("click",(e)=>{
+            const randomColor=randomColorGenerator();
+            body.style.backgroundColor=randomColor;
+            current_color.textContent=randomColor;
+            // we know the value of red,green, and blue goes from 0 to 255 in rgb(.....) Therfore using the Math.floor(Math.random()*255) we can get numbers from 0 to 255
+        })
+
+
+
+
+
+
+
+
+
+        // ------------------------------------------------------------
+        const allButtons = document.querySelectorAll(".btn");
+        console.log(allButtons);
+        allButtons.forEach((button) => {
+            button.addEventListener('click', (e) => {
+                e.target.style.backgroundColor="black";
+                e.target.style.color="white";
+                console.log(e.currentTarget.textContent);
+            })
+        })
+        //-----------------------------------------------------
+    </script>
+</body>
+
+</html>
