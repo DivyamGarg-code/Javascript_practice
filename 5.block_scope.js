@@ -1,4 +1,5 @@
 /*
+Block is also known as compound statement and and it is used to combine multiple javascript statements into 1 group 
 {
     // compound statement
     var a=10;

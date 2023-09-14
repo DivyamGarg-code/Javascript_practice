@@ -32,3 +32,5 @@ function comp1(a,b){
 let arr1=["a","b","c","d"];
 arr1.sort(comp1);
 console.log(arr1);
+
+

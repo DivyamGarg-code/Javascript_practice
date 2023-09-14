@@ -1,6 +1,6 @@
 /*
     let and const declarations are Hoisted
-    console.log(a); // This will give you reference error(because a is in the temporaldead zone) Cannot access 'a' before initiallization 
+    console.log(a); // This will give you reference error(because a is in the temporal dead zone) Cannot access 'a' before initiallization 
     let a=10;
     var b=100;
     let and const behave differently as compared to var

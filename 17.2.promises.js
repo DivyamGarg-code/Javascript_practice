@@ -44,7 +44,7 @@
 
 // Lets use the fetch function to call 
 
-const URL="https://restcountries.com/all"
+const URL="https://restcountries.com/v3.1/all"
 // fetch() function is basically an API given by browser to us to make external calls[http requests]
 const user= fetch(URL); // This fetch function will return me the promise object
 // Lets observe the running state of fetch API
@@ -57,8 +57,14 @@ user-> {
  */
 console.log(user); // At this point of time the promise object is in the pending state
 
-user.then(function(data){
+user.then((response)=>{
+    return response.json();
+})
+.then((data)=>{
     console.log(data);
+})
+.catch((error)=>{
+    console.log("Error fetching the data:",error);
 })
 
 /*
