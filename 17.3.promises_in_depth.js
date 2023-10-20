@@ -39,3 +39,5 @@ function createOrder(cart){ // It will return a promise over here
 function validateCart(cart){
     return cart.length!=0;
 }
+
+
