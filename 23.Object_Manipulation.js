@@ -49,7 +49,7 @@ function updateKey(user, updated_value, str = "age") {
                 user[key] = updated_value;
                 return;
             } else {
-                updateKey(value);
+                updateKey(value,updated_value,str);
             }
         } else {
             if (key === str) {
@@ -69,7 +69,7 @@ function deleteKey(user, str = "obj5") {
                 delete user[key];
                 return;
             } else {
-                deleteKey(value);
+                deleteKey(value,str);
             }
         } else {
             if (key === str) {
